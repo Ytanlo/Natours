@@ -1,0 +1,8 @@
+@mixin clearfix {
+    &::after {
+        /*Siempre se debe especificar un contenido, aunque sea vacio, para que funcione*/
+        content: "";
+        display: table;
+        clear: both;
+    }
+}

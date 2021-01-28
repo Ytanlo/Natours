@@ -1,0 +1,117 @@
+.btn{
+    /*pseudo clase link, sirve para darle color a un link*/ 
+    /*Visited sirve para darle estilos una vez que ya hayan visitado el enlace*/
+    &,
+    &:link,
+    &:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+
+    /*Le aplicaremos la animaion al boton con la propiedad transition, tambien se puede hacer con Qkeyframe*/
+    transition: all .2s;
+
+    /*Le agrego posision relativa para que futuras propiedades internas que quiera manejar como absolutas se muevan dentro de esta y no de otras fuera de esta*/
+
+    position: relative;
+    font-size: $default-font-size;
+
+    //Cambios para <button> element
+    border: none;
+    cursor: pointer;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba($color-black, 2);
+
+        &::after {
+            /*Aqui creo un hijo, pero del pseudo elemento hover, tal hijo solo aparecera cuando la propiedad hover se cumpla*/
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 10px rgba($color-black, 2);
+    }
+
+    &::after {
+        /*Aqui usare pseudo elementos para aplica efectos */
+        content: "";
+        /*Especifico la misma propiedad de display que tiene el padre ya que quiero que se mantenga igual*/
+        display: inline-block;
+        /*Especifico dimensiones porque los pseudo elementos se consideran como hijos del elemento con el que vamos a trabajar estos estilos, por eso le pongo el ancho y alto del 100% en relacion con las medidas del "padre"*/
+        height: 100%;
+        width: 100%; 
+        border-radius: 100px;
+    
+        /*Ya que al poner display: inline-block su posicion se basara en las proporciones de los demas, le pongo posision absoluta para que salga del flujo y se mueva libremente*/
+        position: absolute;
+        top: 0;
+        left: 0; 
+        z-index: -100;
+    
+        /*Aqui aplico la animacion al pseudo elemento hijo que es la que hace que su scale se vea como si redujera su tamaño*/
+        transition: all .4s;
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+    
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+    
+        &::after {
+            background-color: $color-primary-light;
+        }
+    }
+    
+    &--animated {
+        /*Aqui va la animacion que hace que al cargar la pagina aparezca y se mueva de abajo hacia arriba*/
+    
+        animation: moveToUp .5s linear .75s;
+        animation-fill-mode: backwards;
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;
+    }
+
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+}
+
+
+
+

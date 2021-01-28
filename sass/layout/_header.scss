@@ -1,0 +1,44 @@
+.header {
+    /*Fondo principal*/
+    height: 95vh;
+    background-image: linear-gradient( 
+        to right bottom,
+        rgba($color-primary-light,0.8),
+          rgba($color-primary-dark,0.8)),
+          url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+
+    /*Manera moderna de agregarle estilo a tus layouts de css (o a lo que se te ocurra)*/
+    clip-path: polygon( 0 0, 100% 0, 100% 75vh, 0 100%);
+
+    
+    &__logo-box {
+        /*contenedor del logo*/
+        position: absolute;
+        top: 40px;
+        left: 40px;
+    }
+
+    
+    &__logo {
+        /*logo*/
+        height: 35px;
+        /*la posision width se pone automatica respecto al height*/
+    }
+
+    &__text-box {
+        /*Aqui voy a posicionar el texto en el centro de la pantalla*/
+        position: absolute;
+
+        /*Esto lo mueve en relacion con las medidas del contenedor padre que tiene la posision relativa*/
+        top: 40%;
+        left: 50%;
+
+        /*Esto lo mueve en relacion a las medidas que tiene en si mismo este contenedor*/
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}
+
